@@ -8,6 +8,7 @@ Reproduce the Detail screen below in Flutter.
 
 ### How to complete the task
 
+- Clone the repo and work on your copy
 - Design the screen above using your knowledge of layout. 
 - Download the app fonts from [here](https://fonts.google.com/specimen/Sora?query=sora)
 - Carefully select and use from the colors listed below:
