@@ -4,7 +4,7 @@
 
 Reproduce the Detail screen below in Flutter.
 
-[Cappucino Detail Screen]()
+<img width="414" alt="Cappucino" src="https://github.com/wptechprodigy/capuccino/assets/22558674/2ffe4613-e0dc-439d-b4f7-8c6199e719ee">
 
 ### How to complete the task
 
