@@ -11,10 +11,10 @@ Reproduce the Detail screen below in Flutter.
 - Design the screen above using your knowledge of layout. 
 - Download the app fonts from [here](https://fonts.google.com/specimen/Sora?query=sora)
 - Carefully select and use from the colors listed below:
-    a.  2F2D2C
-    b.  C67C4E
-    c.  FBBE21
-    d.  9B9B9B
+    -  2F2D2C
+    -  C67C4E
+    -  FBBE21
+    -  9B9B9B
 
 ### What would be graded?
 
