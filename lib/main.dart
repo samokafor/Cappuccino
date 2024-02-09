@@ -169,7 +169,7 @@ class ImageTitleSection extends StatelessWidget {
               Text(
                 content,
                 style: const TextStyle(
-                  color: Colors.grey,
+                  color: Color(0xFFa4a4a4),
                   fontSize: 14,
                   fontFamily: 'Century Gothic',
                 ),
@@ -196,7 +196,7 @@ class RatingSection extends StatelessWidget {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Row(
           children: [
-            const Icon(Icons.star, color: Color.fromARGB(255, 240, 200, 0)),
+            const Icon(Icons.star, color: Color(0xFFfbbe22)),
             Text(' $rating ',
                 style: const TextStyle(
                   fontSize: 18,
@@ -231,7 +231,7 @@ class RatingImages extends StatelessWidget {
       child: Container(
         width: 50,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 246, 246, 246),
+          color: const Color(0xFFf9f9f9),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Image.asset(imageURL),
@@ -280,7 +280,7 @@ class DecsriptionSection extends StatelessWidget {
                             fontSize: 15,
                             fontFamily: 'Sora',
                             fontWeight: FontWeight.w300,
-                            color: Colors.grey,
+                            color: Color(0xFFA4A4A4),
                           ),
                         ),
                         if (description.length > maxLength)
@@ -290,7 +290,7 @@ class DecsriptionSection extends StatelessWidget {
                               fontSize: 15,
                               fontFamily: 'Sora',
                               fontWeight: FontWeight.w600,
-                              color: Color.fromARGB(255, 173, 89, 56),
+                              color: Color(0xFFC67C4E),
                             ),
                           ),
                       ],
@@ -307,55 +307,71 @@ class DecsriptionSection extends StatelessWidget {
   }
 }
 
-class SizeSection extends StatelessWidget {
+class SizeSection extends StatefulWidget {
   const SizeSection({super.key});
 
   @override
+  _SizeSectionState createState() => _SizeSectionState();
+}
+
+class _SizeSectionState extends State<SizeSection> {
+  String selectedSize = 'M'; // Default selected size
+
+  @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.only(left: 15),
-              child: Text('Size',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      fontFamily: 'Sora')),
+              child: Text(
+                'Size',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  fontFamily: 'Sora',
+                ),
+              ),
             ),
           ],
         ),
-        SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizeChip(
-                  size: 'S',
-                  textColor: Colors.black,
-                  backgroundColor: Colors.white,
-                  borderColor: Color.fromARGB(169, 158, 158, 158)),
-              SizedBox(
-                width: 10,
+                size: 'S',
+                isSelected: selectedSize == 'S',
+                onPressed: () {
+                  setState(() {
+                    selectedSize = 'S';
+                  });
+                },
               ),
+              const SizedBox(width: 10),
               SizeChip(
-                  size: 'M',
-                  textColor: Color.fromARGB(255, 110, 52, 30),
-                  backgroundColor: Color.fromARGB(180, 255, 216, 199),
-                  borderColor: Color.fromARGB(255, 206, 123, 91)),
-              SizedBox(
-                width: 10,
+                size: 'M',
+                isSelected: selectedSize == 'M',
+                onPressed: () {
+                  setState(() {
+                    selectedSize = 'M';
+                  });
+                },
               ),
+              const SizedBox(width: 10),
               SizeChip(
-                  size: 'L',
-                  textColor: Colors.black,
-                  backgroundColor: Colors.white,
-                  borderColor: Color.fromARGB(169, 158, 158, 158)),
+                size: 'L',
+                isSelected: selectedSize == 'L',
+                onPressed: () {
+                  setState(() {
+                    selectedSize = 'L';
+                  });
+                },
+              ),
             ],
           ),
         ),
@@ -366,37 +382,38 @@ class SizeSection extends StatelessWidget {
 
 class SizeChip extends StatelessWidget {
   const SizeChip({
-    super.key,
+    Key? key,
     required this.size,
-    required this.textColor,
-    required this.backgroundColor,
-    required this.borderColor,
-  });
+    required this.isSelected,
+    required this.onPressed,
+  }) : super(key: key);
+
   final String size;
-  final Color textColor;
-  final Color backgroundColor;
-  final Color borderColor;
+  final bool isSelected;
+  final VoidCallback onPressed;
+
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            foregroundColor: textColor,
-            backgroundColor: backgroundColor,
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-                side: BorderSide(color: borderColor)),
-          ),
-          child: Text(
-            size,
-            style: const TextStyle(
-                fontFamily: 'Sora', fontSize: 18,),
-          ),
+    final borderColor = isSelected ? const Color(0xFFC67C4E) : Colors.grey;
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        primary: isSelected ? const Color(0xFFFFF5EE) : Colors.white, // Change background color based on selection
+        onPrimary: isSelected ? const Color.fromARGB(255, 173, 89, 56) : Colors.black, // Change text color based on selection
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(color: borderColor),
         ),
-      ],
+      ),
+      child: Text(
+        size,
+        style: const TextStyle(
+          fontFamily: 'Sora',
+          fontSize: 18,
+        ),
+      ),
     );
   }
 }
@@ -428,7 +445,7 @@ class PriceSection extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
                       fontFamily: 'Sora',
-                      color: Color.fromARGB(255, 173, 89, 56))),
+                      color: Color(0xFFC67C4E))),
             ],
           ),
           ElevatedButton(
@@ -436,7 +453,7 @@ class PriceSection extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white,
               backgroundColor:
-              const Color.fromARGB(255, 173, 89, 56), // Change text color
+              const Color(0xFFC67C4E), // Change text color
               padding: const EdgeInsets.symmetric(
                   vertical: 30, horizontal: 80), // Adjust padding
               shape: RoundedRectangleBorder(
