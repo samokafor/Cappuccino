@@ -61,10 +61,25 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar:  const BottomAppBar(
-          height: 150.0, // Adjust the height as needed
-          color: Colors.white,
-              child: PriceSection(price: 4.53)),
+        bottomNavigationBar: Container(
+          height: 150.0,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: const PriceSection(price: 4.53),
+        ),
       ),
     );
   }
@@ -214,7 +229,7 @@ class RatingImages extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
       child: Container(
-        width: 60,
+        width: 50,
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 246, 246, 246),
           borderRadius: BorderRadius.circular(20),
@@ -243,7 +258,7 @@ class DecsriptionSection extends StatelessWidget {
             Text('Description',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    fontSize: 20,
                     fontFamily: 'Sora')),
           ],
         ),
