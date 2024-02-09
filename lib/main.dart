@@ -44,6 +44,15 @@ class MyApp extends StatelessWidget {
                   color: Colors.grey,
                 ),
                 SizedBox(height: 10),
+                DecsriptionSection(
+                      description:
+                      'A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85 ml of fresh milk. The foam, which tops the beverage, consists of steamed milk that has been aerated to create a thick, creamy texture, giving the drink its signature velvety consistency.',
+                      maxLength: 100,
+                    ),
+                SizedBox(
+                      height: 10,
+                    ),
+                
               ],
             ),
           ),
@@ -204,6 +213,73 @@ class RatingImages extends StatelessWidget {
         ),
         child: Image.asset(imageURL),
       ),
+    );
+  }
+}
+
+class DecsriptionSection extends StatelessWidget {
+  const DecsriptionSection({super.key,
+    required this.description,
+    required this.maxLength});
+
+  final String description;
+  final int maxLength;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15),
+      child: Column(children: [
+        const Row(
+          children: [
+            Text('Description',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    fontFamily: 'Sora')),
+          ],
+        ),
+        const SizedBox(height: 8),
+        Container(
+          // width: 380,
+          margin: const EdgeInsets.only(left: 3),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: description.length > maxLength ? '${description.substring(0, maxLength)}...' : description,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontFamily: 'Sora',
+                            fontWeight: FontWeight.w300,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        if (description.length > maxLength)
+                          const TextSpan(
+                            text: ' Read More',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Sora',
+                              fontWeight: FontWeight.w300,
+                              color: Color.fromARGB(255, 173, 89, 56),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+          ),
+        )
+      ]),
     );
   }
 }
