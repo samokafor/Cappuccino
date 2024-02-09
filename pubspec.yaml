@@ -65,10 +65,10 @@ flutter:
 
 
   assets:
-    - assets/images/arrow_left.jpg
+    - assets/images/arrow_left.png
     - assets/images/bean.jpg
     - assets/images/bean.png
-    - assets/images/heart.jpg
+    - assets/images/heart.png
     - assets/images/heart_icon.jpg
     - assets/images/milk.jpg
     - assets/images/milk.png

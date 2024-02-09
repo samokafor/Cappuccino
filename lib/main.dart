@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           actions: const [
             AppBarSection(
-                leftIconImage: "assets/images/arrow_left.jpg",
+                leftIconImage: "assets/images/arrow_left.png",
                 appBarTitle: 'Details',
-                rightIconImage: 'assets/images/heart.jpg')
+                rightIconImage: 'assets/images/heart.png')
           ],
         ),
         body: const SingleChildScrollView(
@@ -205,7 +205,7 @@ class RatingSection extends StatelessWidget {
                 )),
             Text('($numberOfRaters)',
                 style: const TextStyle(
-                    fontSize: 14, fontFamily: 'Sora', color: Colors.grey)),
+                    fontSize: 14, fontFamily: 'Sora', color: Color(0xFFA4A4A4))),
           ],
         ),
         const Row(
