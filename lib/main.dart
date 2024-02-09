@@ -170,7 +170,7 @@ class ImageTitleSection extends StatelessWidget {
                 style: const TextStyle(
                   color: Color(0xFFa4a4a4),
                   fontSize: 14,
-                  fontFamily: 'Century Gothic',
+                  fontFamily: 'Sora',
                 ),
               ),
             ],
