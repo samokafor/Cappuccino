@@ -32,9 +32,18 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
                 ImageTitleSection(
-                      imageTitle: 'Capuccino',
-                      content: 'with Chocolate',
-                    ),
+                  imageTitle: 'Cappuccino',
+                  content: 'with Chocolate',
+                ),
+                RatingSection(
+                  rating: 4.8,
+                  numberOfRaters: 230,
+                ),
+                SizedBox(height: 10),
+                Divider(
+                  color: Colors.grey,
+                ),
+                SizedBox(height: 10),
               ],
             ),
           ),
@@ -136,6 +145,64 @@ class ImageTitleSection extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class RatingSection extends StatelessWidget {
+  const RatingSection(
+      {super.key, required this.rating, required this.numberOfRaters});
+
+  final double rating;
+  final int numberOfRaters;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Row(
+          children: [
+            const Icon(Icons.star, color: Color.fromARGB(255, 240, 200, 0)),
+            Text(' $rating ',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'Sora',
+                  fontWeight: FontWeight.bold,
+                )),
+            Text('($numberOfRaters)',
+                style: const TextStyle(
+                    fontSize: 14, fontFamily: 'Sora', color: Colors.grey)),
+          ],
+        ),
+        const Row(
+          children: [
+            RatingImages(imageURL: 'assets/images/bean.png'),
+            RatingImages(imageURL: 'assets/images/milk.png')
+          ],
+        ),
+      ]),
+    );
+  }
+}
+
+class RatingImages extends StatelessWidget {
+  const RatingImages({super.key, required this.imageURL});
+
+  final String imageURL;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Container(
+        width: 60,
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 246, 246, 246),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Image.asset(imageURL),
       ),
     );
   }
