@@ -45,17 +45,17 @@ class MyApp extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 DecsriptionSection(
-                      description:
+                  description:
                       'A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85 ml of fresh milk. The foam, which tops the beverage, consists of steamed milk that has been aerated to create a thick, creamy texture, giving the drink its signature velvety consistency.',
-                      maxLength: 100,
-                    ),
+                  maxLength: 100,
+                ),
                 SizedBox(
-                      height: 10,
-                    ),
+                  height: 10,
+                ),
                 SizeSection(),
                 SizedBox(
-                      height: 10,
-                    ),
+                  height: 10,
+                ),
                 // PriceSection(price: 4.53)
               ],
             ),
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: const Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -165,7 +165,6 @@ class ImageTitleSection extends StatelessWidget {
                 ),
                 textAlign: TextAlign.left,
               ),
-              //  const SizedBox(height: 5),
               Text(
                 content,
                 style: const TextStyle(
@@ -205,7 +204,9 @@ class RatingSection extends StatelessWidget {
                 )),
             Text('($numberOfRaters)',
                 style: const TextStyle(
-                    fontSize: 14, fontFamily: 'Sora', color: Color(0xFFA4A4A4))),
+                    fontSize: 10,
+                    fontFamily: 'Sora',
+                    color: Color(0xFFA4A4A4))),
           ],
         ),
         const Row(
@@ -241,9 +242,8 @@ class RatingImages extends StatelessWidget {
 }
 
 class DecsriptionSection extends StatelessWidget {
-  const DecsriptionSection({super.key,
-    required this.description,
-    required this.maxLength});
+  const DecsriptionSection(
+      {super.key, required this.description, required this.maxLength});
 
   final String description;
   final int maxLength;
@@ -275,7 +275,9 @@ class DecsriptionSection extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: description.length > maxLength ? '${description.substring(0, maxLength)}...' : description,
+                          text: description.length > maxLength
+                              ? '${description.substring(0, maxLength)}...'
+                              : description,
                           style: const TextStyle(
                             fontSize: 15,
                             fontFamily: 'Sora',
@@ -299,7 +301,6 @@ class DecsriptionSection extends StatelessWidget {
                 ),
               ],
             ),
-
           ),
         )
       ]),
@@ -315,7 +316,7 @@ class SizeSection extends StatefulWidget {
 }
 
 class _SizeSectionState extends State<SizeSection> {
-  String selectedSize = 'M'; // Default selected size
+  String selectedSize = 'M';
 
   @override
   Widget build(BuildContext context) {
@@ -330,14 +331,14 @@ class _SizeSectionState extends State<SizeSection> {
                 'Size',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 20,
                   fontFamily: 'Sora',
                 ),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        // const SizedBox(height: 0),
         Padding(
           padding: const EdgeInsets.all(15),
           child: Row(
@@ -392,15 +393,18 @@ class SizeChip extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onPressed;
 
-
   @override
   Widget build(BuildContext context) {
     final borderColor = isSelected ? const Color(0xFFC67C4E) : Colors.grey;
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: isSelected ? const Color(0xFFFFF5EE) : Colors.white, // Change background color based on selection
-        onPrimary: isSelected ? const Color.fromARGB(255, 173, 89, 56) : Colors.black, // Change text color based on selection
+        primary: isSelected
+            ? const Color(0xFFFFF5EE)
+            : Colors.white,
+        onPrimary: isSelected
+            ? const Color.fromARGB(255, 173, 89, 56)
+            : Colors.black, // Change text color based on selection
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -430,7 +434,7 @@ class PriceSection extends StatelessWidget {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment
-                .start, // Align text to the start (left) of the column
+                .start,
             children: [
               const Text(
                 'Price',
@@ -452,10 +456,9 @@ class PriceSection extends StatelessWidget {
             onPressed: () {},
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white,
-              backgroundColor:
-              const Color(0xFFC67C4E), // Change text color
+              backgroundColor: const Color(0xFFC67C4E), // Change text color
               padding: const EdgeInsets.symmetric(
-                  vertical: 30, horizontal: 80), // Adjust padding
+                  vertical: 30, horizontal: 80),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
