@@ -52,7 +52,11 @@ class MyApp extends StatelessWidget {
                 SizedBox(
                       height: 10,
                     ),
-                
+                SizeSection(),
+                SizedBox(
+                      height: 20,
+                    ),
+                PriceSection(price: 4.53)
               ],
             ),
           ),
@@ -280,6 +284,156 @@ class DecsriptionSection extends StatelessWidget {
           ),
         )
       ]),
+    );
+  }
+}
+
+class SizeSection extends StatelessWidget {
+  const SizeSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 15),
+              child: Text('Size',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      fontFamily: 'Sora')),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Padding(
+          padding: EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizeChip(
+                  size: 'S',
+                  textColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  borderColor: Color.fromARGB(169, 158, 158, 158)),
+              SizedBox(
+                width: 10,
+              ),
+              SizeChip(
+                  size: 'M',
+                  textColor: Color.fromARGB(255, 110, 52, 30),
+                  backgroundColor: Color.fromARGB(180, 255, 216, 199),
+                  borderColor: Color.fromARGB(255, 206, 123, 91)),
+              SizedBox(
+                width: 10,
+              ),
+              SizeChip(
+                  size: 'L',
+                  textColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  borderColor: Color.fromARGB(169, 158, 158, 158)),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class SizeChip extends StatelessWidget {
+  const SizeChip({
+    super.key,
+    required this.size,
+    required this.textColor,
+    required this.backgroundColor,
+    required this.borderColor,
+  });
+  final String size;
+  final Color textColor;
+  final Color backgroundColor;
+  final Color borderColor;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            foregroundColor: textColor,
+            backgroundColor: backgroundColor,
+            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 45),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(color: borderColor)),
+          ),
+          child: Text(
+            size,
+            style: const TextStyle(
+                fontFamily: 'Sora', fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class PriceSection extends StatelessWidget {
+  const PriceSection({super.key, required this.price});
+  final double price;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment
+                .start, // Align text to the start (left) of the column
+            children: [
+              const Text(
+                'Price',
+                style: TextStyle(
+                    fontFamily: 'Sora', color: Colors.grey, fontSize: 16),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text('\$$price',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      fontFamily: 'Sora',
+                      color: Color.fromARGB(255, 173, 89, 56))),
+            ],
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor:
+              const Color.fromARGB(255, 173, 89, 56), // Change text color
+              padding: const EdgeInsets.symmetric(
+                  vertical: 30, horizontal: 80), // Adjust padding
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+            child: const Text(
+              'Buy Now',
+              style: TextStyle(
+                  fontFamily: 'Sora',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
