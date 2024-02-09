@@ -54,13 +54,17 @@ class MyApp extends StatelessWidget {
                     ),
                 SizeSection(),
                 SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
-                PriceSection(price: 4.53)
+                // PriceSection(price: 4.53)
               ],
             ),
           ),
         ),
+        bottomNavigationBar:  const BottomAppBar(
+          height: 150.0, // Adjust the height as needed
+          color: Colors.white,
+              child: PriceSection(price: 4.53)),
       ),
     );
   }
@@ -270,7 +274,7 @@ class DecsriptionSection extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 15,
                               fontFamily: 'Sora',
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w600,
                               color: Color.fromARGB(255, 173, 89, 56),
                             ),
                           ),
@@ -366,7 +370,7 @@ class SizeChip extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             foregroundColor: textColor,
             backgroundColor: backgroundColor,
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 45),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
                 side: BorderSide(color: borderColor)),
@@ -374,7 +378,7 @@ class SizeChip extends StatelessWidget {
           child: Text(
             size,
             style: const TextStyle(
-                fontFamily: 'Sora', fontSize: 18, fontWeight: FontWeight.bold),
+                fontFamily: 'Sora', fontSize: 18,),
           ),
         ),
       ],
