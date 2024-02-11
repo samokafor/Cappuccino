@@ -12,7 +12,7 @@ This Flutter project is a simple e-commerce app showcasing a product page for a 
 
 ## Screenshots
 
-![Screenshot](assets/images/Samuel-N-Okafor-Cappuccino-Screenshot.jpg)
+[//]: # (![Screenshot]&#40;assets/images/Samuel-N-Okafor-Cappuccino-Screenshot.jpg&#41;)
 <img width="414" alt="Screenshot" src="assets/images/Samuel-N-Okafor-Cappuccino-Screenshot.jpg">
 
 ## How to Run the Project
