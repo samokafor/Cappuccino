@@ -16,21 +16,23 @@ class MyApp extends StatelessWidget {
           actions: const [
             AppBarSection(
                 leftIconImage: "assets/images/arrow_left.png",
-                appBarTitle: 'Details',
+                appBarTitle: 'Detail',
                 rightIconImage: 'assets/images/heart.png')
           ],
         ),
         body: const SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
             child: Column(
               children: [
+                SizedBox(height: 10),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: ImageSection(
                     imageURL: 'assets/images/Rectangle.jpg',
                   ),
                 ),
+                SizedBox(height: 10),
                 ImageTitleSection(
                   imageTitle: 'Cappuccino',
                   content: 'with Chocolate',
@@ -41,13 +43,13 @@ class MyApp extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Divider(
-                  color: Colors.grey,
+                  color: Color(0xF0B1AFAF),
                 ),
                 SizedBox(height: 10),
                 DecsriptionSection(
                   description:
                       'A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85 ml of fresh milk. The foam, which tops the beverage, consists of steamed milk that has been aerated to create a thick, creamy texture, giving the drink its signature velvety consistency.',
-                  maxLength: 70,
+                  maxLength: 118,
                 ),
                 SizedBox(
                   height: 10,
@@ -56,7 +58,6 @@ class MyApp extends StatelessWidget {
                 SizedBox(
                   height: 5,
                 ),
-                // PriceSection(price: 4.53)
               ],
             ),
           ),
@@ -110,7 +111,7 @@ class AppBarSection extends StatelessWidget {
           Text(
             appBarTitle,
             style: const TextStyle(
-                fontFamily: 'Sora', fontWeight: FontWeight.bold, fontSize: 22),
+                fontFamily: 'Sora', fontWeight: FontWeight.bold, fontSize: 20),
           ),
           Image.asset(
             rightIconImage,
@@ -159,7 +160,7 @@ class ImageTitleSection extends StatelessWidget {
               Text(
                 imageTitle,
                 style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Sora',
                 ),
@@ -169,7 +170,7 @@ class ImageTitleSection extends StatelessWidget {
                 content,
                 style: const TextStyle(
                   color: Color(0xFFa4a4a4),
-                  fontSize: 14,
+                  fontSize: 13,
                   fontFamily: 'Sora',
                 ),
               ),
@@ -204,7 +205,7 @@ class RatingSection extends StatelessWidget {
                 )),
             Text('($numberOfRaters)',
                 style: const TextStyle(
-                    fontSize: 10,
+                    fontSize: 12,
                     fontFamily: 'Sora',
                     color: Color(0xFFA4A4A4))),
           ],
@@ -257,8 +258,8 @@ class DecsriptionSection extends StatelessWidget {
           children: [
             Text('Description',
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
                     fontFamily: 'Sora')),
           ],
         ),
@@ -279,9 +280,9 @@ class DecsriptionSection extends StatelessWidget {
                               ? '${description.substring(0, maxLength)}...'
                               : description,
                           style: const TextStyle(
-                            fontSize: 15,
+                            fontSize: 13,
                             fontFamily: 'Sora',
-                            fontWeight: FontWeight.w300,
+                            fontWeight: FontWeight.w400,
                             color: Color(0xFFA4A4A4),
                           ),
                         ),
@@ -289,7 +290,7 @@ class DecsriptionSection extends StatelessWidget {
                           const TextSpan(
                             text: ' Read More',
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 13,
                               fontFamily: 'Sora',
                               fontWeight: FontWeight.w600,
                               color: Color(0xFFC67C4E),
@@ -312,6 +313,7 @@ class SizeSection extends StatefulWidget {
   const SizeSection({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SizeSectionState createState() => _SizeSectionState();
 }
 
@@ -330,8 +332,8 @@ class _SizeSectionState extends State<SizeSection> {
               child: Text(
                 'Size',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
                   fontFamily: 'Sora',
                 ),
               ),
@@ -395,17 +397,17 @@ class SizeChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderColor = isSelected ? const Color(0xFFC67C4E) : Colors.grey;
+    final borderColor = isSelected ? const Color(0xFFC67C4E) : const Color(0xFFA4A4A4);
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: isSelected
+        backgroundColor: isSelected
             ? const Color(0xFFFFF5EE)
             : Colors.white,
-        onPrimary: isSelected
+        foregroundColor: isSelected
             ? const Color(0xFFC67C4E)
             : Colors.black,
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 42),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
           side: BorderSide(color: borderColor),
@@ -415,7 +417,7 @@ class SizeChip extends StatelessWidget {
         size,
         style: const TextStyle(
           fontFamily: 'Sora',
-          fontSize: 18,
+          fontSize: 15,
         ),
       ),
     );
@@ -428,7 +430,7 @@ class PriceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(25.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -446,8 +448,8 @@ class PriceSection extends StatelessWidget {
               ),
               Text('\$$price',
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
                       fontFamily: 'Sora',
                       color: Color(0xFFC67C4E))),
             ],
@@ -458,7 +460,7 @@ class PriceSection extends StatelessWidget {
               foregroundColor: Colors.white,
               backgroundColor: const Color(0xFFC67C4E), // Change text color
               padding: const EdgeInsets.symmetric(
-                  vertical: 30, horizontal: 80),
+                  vertical: 20, horizontal: 75),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
