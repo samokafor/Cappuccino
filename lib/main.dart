@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: ImageSection(
                     imageURL: 'assets/images/Rectangle.jpg',
                   ),
@@ -47,14 +47,14 @@ class MyApp extends StatelessWidget {
                 DecsriptionSection(
                   description:
                       'A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85 ml of fresh milk. The foam, which tops the beverage, consists of steamed milk that has been aerated to create a thick, creamy texture, giving the drink its signature velvety consistency.',
-                  maxLength: 100,
+                  maxLength: 70,
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 SizeSection(),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 // PriceSection(price: 4.53)
               ],
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: Container(
-          height: 150.0,
+          height: 120.0,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: const BorderRadius.only(
@@ -110,7 +110,7 @@ class AppBarSection extends StatelessWidget {
           Text(
             appBarTitle,
             style: const TextStyle(
-                fontFamily: 'Sora', fontWeight: FontWeight.bold, fontSize: 25),
+                fontFamily: 'Sora', fontWeight: FontWeight.bold, fontSize: 22),
           ),
           Image.asset(
             rightIconImage,
@@ -127,9 +127,9 @@ class ImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Image.asset(
-        imageURL,
+    return Column(crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(imageURL,
         width: double.infinity,
         fit: BoxFit.cover,
       )
@@ -150,7 +150,7 @@ class ImageTitleSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.only(left: 10.0),
       child: Row(
         children: [
           Column(
@@ -403,8 +403,8 @@ class SizeChip extends StatelessWidget {
             ? const Color(0xFFFFF5EE)
             : Colors.white,
         onPrimary: isSelected
-            ? const Color.fromARGB(255, 173, 89, 56)
-            : Colors.black, // Change text color based on selection
+            ? const Color(0xFFC67C4E)
+            : Colors.black,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -436,13 +436,13 @@ class PriceSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment
                 .start,
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               const Text(
                 'Price',
                 style: TextStyle(
-                    fontFamily: 'Sora', color: Colors.grey, fontSize: 16),
-              ),
-              const SizedBox(
-                height: 10,
+                    fontFamily: 'Sora', color: Colors.grey, fontSize: 18),
               ),
               Text('\$$price',
                   style: const TextStyle(

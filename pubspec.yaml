@@ -66,11 +66,8 @@ flutter:
 
   assets:
     - assets/images/arrow_left.png
-    - assets/images/bean.jpg
     - assets/images/bean.png
     - assets/images/heart.png
-    - assets/images/heart_icon.jpg
-    - assets/images/milk.jpg
     - assets/images/milk.png
     - assets/images/Rectangle.jpg
 
